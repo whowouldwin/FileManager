@@ -1,6 +1,7 @@
 import { promptUserName } from './library/promptUserName.js';
 import { handleUserInput } from './library/handleUserInput.js';
 
+
 (async () => {
   let {user, rl, currentDir} = await promptUserName();
   console.log(`Welcome to the File Manager, ${user}`);

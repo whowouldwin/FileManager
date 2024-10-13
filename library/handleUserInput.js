@@ -1,7 +1,7 @@
 import * as path from 'node:path';
-import { changeDirectory } from './changeDirectory.js';
+import { cdCommand } from './commands/cdCommand.js';
 
-export async function handleUserInput (line, rl, user, currentDir) {
+export async function handleUserInput(line, rl, user, currentDir) {
   const input = line.trim();
   const args = input.split(' ')
   const command = args[0];
@@ -18,22 +18,7 @@ export async function handleUserInput (line, rl, user, currentDir) {
         }
         break;
       case 'cd':
-        if (args.length < 2) {
-          console.log('Operation failed. You need to specify the directory');
-          console.log(`
-          Usage: 
-            * Absolute path: cd /path/to/directory 
-            * Relative path: cd folder_name (moves into the "folder_name" subfolder from your current location)
-            * To go back one folder: cd ...
-          Example: 
-            cd /home/user/docs   (absolute path)
-            cd docs   (relative path)
-            cd ..
-            cd ../folder_name
-          `);
-        } else {
-          currentDir = await changeDirectory(currentDir, args[1]);
-        }
+        currentDir = await cdCommand(currentDir, args);
         break;
       default:
         console.log('Invalid input')
