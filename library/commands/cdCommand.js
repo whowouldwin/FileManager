@@ -1,4 +1,4 @@
-import { changeDirectory } from '../changeDirectory.js';
+import { changeDirectory } from '../utils/changeDirectory.js';
 
 export async function cdCommand(currentDir, args) {
   if (args.length < 2) {
