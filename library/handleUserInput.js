@@ -1,3 +1,5 @@
+import * as path from 'node:path';
+
 export async function handleUserInput (line, rl, user, currentDir) {
   const input = line.trim();
   const args = input.split(' ')
@@ -7,7 +9,13 @@ export async function handleUserInput (line, rl, user, currentDir) {
     switch (command) {
       case '.exit':
         rl.close();
-        return;
+        return currentDir;
+      case 'up':
+        const parentDir = path.dirname(currentDir);
+        if (parentDir !== currentDir) {
+          currentDir = parentDir;
+        }
+        break;
       default:
         console.log('Invalid input')
         break;
@@ -17,4 +25,5 @@ export async function handleUserInput (line, rl, user, currentDir) {
   }
   console.log(`You are currently in ${currentDir}`);
   rl.prompt();
+  return currentDir;
 }
