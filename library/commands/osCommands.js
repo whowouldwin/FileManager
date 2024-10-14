@@ -15,6 +15,10 @@ export async function osCommands(args) {
       case '--cpus':
         await cpusCommand();
         break;
+      case '--homedir':
+        const homedir = os.homedir();
+        console.log(`Home directory: ${homedir}`);
+        break;
       default:
         console.log('Operation failed. Please use the correct flags!');
     }
