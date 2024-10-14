@@ -19,6 +19,10 @@ export async function osCommands(args) {
         const homedir = os.homedir();
         console.log(`Home directory: ${homedir}`);
         break;
+      case '--username':
+        const info = os.userInfo();
+        console.log(`User name: ${info.username}`);
+        break;
       default:
         console.log('Operation failed. Please use the correct flags!');
     }
