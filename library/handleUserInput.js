@@ -9,6 +9,7 @@ import { moveCommand } from './commands/moveCommand.js';
 import { removeCommand } from './commands/removeCommand.js';
 import { osCommands } from './commands/osCommands.js';
 import { calculateHash } from './utils/hash/calculateHash.js';
+import { compressFile } from './utils/compression/fileCompression.js';
 
 export async function handleUserInput(line, rl, user, currentDir) {
   const input = line.trim();
@@ -55,6 +56,12 @@ export async function handleUserInput(line, rl, user, currentDir) {
         break;
       case 'hash':
         await calculateHash(args, rl, currentDir);
+        break;
+      case 'compress':
+        await compressFile(args, currentDir);
+        break;
+      case 'decompress':
+        await decompressFile(args, currentDir);
         break;
       default:
         console.log('Invalid input')
