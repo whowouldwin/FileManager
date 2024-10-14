@@ -9,7 +9,7 @@ import { moveCommand } from './commands/moveCommand.js';
 import { removeCommand } from './commands/removeCommand.js';
 import { osCommands } from './commands/osCommands.js';
 import { calculateHash } from './utils/hash/calculateHash.js';
-import { compressFile } from './utils/compression/fileCompression.js';
+import { compressFile, decompressFile } from './utils/compression/fileCompression.js';
 
 export async function handleUserInput(line, rl, user, currentDir) {
   const input = line.trim();
