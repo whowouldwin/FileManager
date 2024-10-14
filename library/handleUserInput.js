@@ -8,6 +8,7 @@ import { copyCommand } from './commands/copyCommand.js';
 import { moveCommand } from './commands/moveCommand.js';
 import { removeCommand } from './commands/removeCommand.js';
 import { osCommands } from './commands/osCommands.js';
+import { calculateHash } from './utils/hash/calculateHash.js';
 
 export async function handleUserInput(line, rl, user, currentDir) {
   const input = line.trim();
@@ -51,6 +52,9 @@ export async function handleUserInput(line, rl, user, currentDir) {
         break;
       case 'os' :
         await osCommands(args);
+        break;
+      case 'hash':
+        await calculateHash(args, rl, currentDir);
         break;
       default:
         console.log('Invalid input')
