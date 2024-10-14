@@ -11,9 +11,10 @@ export async function renameCommand(currentDir, args) {
   const newFilePath = path.join(path.dirname(oldFilePath), newFileName);
 
   try {
+    await fs.access(oldFilePath);
     await fs.rename(oldFilePath, newFilePath);
     console.log(`File renamed successfully to ${newFileName}`);
   } catch (e) {
-    console.log('Failed to rename file:', err.message);
+    console.log('Failed to rename file:', e.message);
   }
 }

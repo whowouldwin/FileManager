@@ -4,6 +4,7 @@ import { lsCommand } from './commands/lsCommand.js';
 import { catCommand } from './commands/catCommand.js';
 import { addCommand } from './commands/addCommand.js';
 import { renameCommand } from './commands/renameCommand.js';
+import { copyCommand } from './commands/copyCommand.js';
 
 export async function handleUserInput(line, rl, user, currentDir) {
   const input = line.trim();
@@ -35,6 +36,9 @@ export async function handleUserInput(line, rl, user, currentDir) {
         break;
       case 'rn':
         await renameCommand(currentDir, args);
+        break;
+      case 'cp':
+        await copyCommand(currentDir, args);
         break;
       default:
         console.log('Invalid input')
