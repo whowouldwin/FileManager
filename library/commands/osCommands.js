@@ -23,6 +23,10 @@ export async function osCommands(args) {
         const info = os.userInfo();
         console.log(`User name: ${info.username}`);
         break;
+      case '--architecture':
+        const architecture = os.arch();
+        console.log(`Architecture: ${architecture}`);
+        break;
       default:
         console.log('Operation failed. Please use the correct flags!');
     }
