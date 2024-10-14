@@ -6,6 +6,7 @@ import { addCommand } from './commands/addCommand.js';
 import { renameCommand } from './commands/renameCommand.js';
 import { copyCommand } from './commands/copyCommand.js';
 import { moveCommand } from './commands/moveCommand.js';
+import { removeCommand } from './commands/removeCommand.js';
 
 export async function handleUserInput(line, rl, user, currentDir) {
   const input = line.trim();
@@ -43,6 +44,9 @@ export async function handleUserInput(line, rl, user, currentDir) {
         break;
       case 'mv':
         await moveCommand(currentDir, args);
+        break;
+      case 'rm':
+        await removeCommand(currentDir, args);
         break;
       default:
         console.log('Invalid input')
