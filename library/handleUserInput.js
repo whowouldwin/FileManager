@@ -5,6 +5,7 @@ import { catCommand } from './commands/catCommand.js';
 import { addCommand } from './commands/addCommand.js';
 import { renameCommand } from './commands/renameCommand.js';
 import { copyCommand } from './commands/copyCommand.js';
+import { moveCommand } from './commands/moveCommand.js';
 
 export async function handleUserInput(line, rl, user, currentDir) {
   const input = line.trim();
@@ -39,6 +40,9 @@ export async function handleUserInput(line, rl, user, currentDir) {
         break;
       case 'cp':
         await copyCommand(currentDir, args);
+        break;
+      case 'mv':
+        await moveCommand(currentDir, args);
         break;
       default:
         console.log('Invalid input')
